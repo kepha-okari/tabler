@@ -9,7 +9,7 @@ DAY_CHOICES = [
     ('monday', 'Monday'),
     ('tuesday', 'Tuesday'),
     ('wednesday', 'Wednesday'),
-    ('thursday', 'Thursday,
+    ('thursday', 'Thursday'),
     ('friday', 'Friday'),
     ]
 
@@ -18,6 +18,12 @@ COURSE_CHOICES = [
     ('ct', 'Computer Technology'),
     ('it', 'Information Technology'),
     ]
+
+# day_CHOICES = [
+#     ('mon', 'Computer Networks'),
+#     ('ct', 'Computer Technology'),
+#     ('it', 'Information Technology'),
+#     ]
 # PERIOD_CHOICES = [
 #     ('cn', 'Computer Networks'),
 #     ('ct', 'Computer Technology'),
@@ -31,11 +37,14 @@ class ScheduleForm(forms.Form):
     '''
     class that generates a new schedule
     '''
-    day = models.DateField(default=True)
-    course = models.CharField((label='course', widget=forms.RadioSelect(choices=COURSE_CHOICES)))
-    year_of_study = models.CharField(max_length = 10,blank =True)
-    period = models.CharField(max_length = 10,blank =True)
-    room = models.CharField(max_length = 10,blank =True)
+    day = forms.DateField()
+    course = forms.CharField(max_length = 10)
+    year1 = forms.IntegerField()
+    year2 = forms.IntegerField()
+    year3 = forms.IntegerField()
+    year4 = forms.IntegerField()
+    period = forms.CharField(max_length = 10)
+    room = forms.CharField(max_length = 10)
 #
 #
 #
