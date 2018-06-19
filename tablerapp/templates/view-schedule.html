@@ -1,0 +1,58 @@
+
+{% extends 'base.html' %}
+{% load static%}
+<!-- Styles block -->
+{% block styles %}
+
+    {{block.super}}
+      <link rel="stylesheet" href="{% static 'css/index.css'%}">
+
+{% endblock %}
+
+ {% block content %}
+
+
+      <hr style="color:rgb(19, 175, 167);">
+
+
+      <section class="col-md-8 col-md-offset-2">
+
+                <table class="uk-table uk-table-hover uk-table-condensed">
+                    <caption><h4>TIME TABLE</h4></caption>
+                    {% if schedules %}
+
+                    <thead>
+                        <tr>
+                          <th style="font-size:15px;color:rgb(212, 3, 66);">COURSE</th>
+                          <th style="font-size:15px;color:rgb(212, 3, 66);">DAY</th>
+                          <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
+                          <th style="font-size:15px;color:rgb(212, 3, 66);">ROOM/HALL</th>
+                        </tr>
+                    </thead>
+
+
+                        <tbody>
+                          {% for schedule in schedules %}
+                            <tr>
+                                {% if schedule.course == 'cn' %}
+                                  <td>COMPUTER NETWORKS</td>
+                                {% elif schedule.course == 'ct' %}
+                                  <td>COMPUTER TECHNOLOGY</td>
+                                {% elif schedule.course == 'it' %}
+                                  <td>INFORMATION TECHNOLOGY</td>
+                                {% endif %}
+                                  <td>{{schedule.day | upper }}</td>
+                                  <td>{{schedule.period | upper }} A.M</td>
+                                  <td>{{schedule.room | upper }}</td>
+
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                      </table>
+
+                    {% endif %}
+
+
+      </section>
+
+{% endblock %}

@@ -19,16 +19,13 @@ COURSE_CHOICES = [
     ('it', 'Information Technology'),
     ]
 
-# day_CHOICES = [
-#     ('mon', 'Computer Networks'),
-#     ('ct', 'Computer Technology'),
-#     ('it', 'Information Technology'),
-#     ]
-# PERIOD_CHOICES = [
-#     ('cn', 'Computer Networks'),
-#     ('ct', 'Computer Technology'),
-#     ('it', 'Information Technology'),
-#     ]
+PERIOD_CHOICES = [
+    ('7', '7 - 9 AM'),
+    ('9', '9 - 11 AM'),
+    ('11','11 - 1 AM'),
+    ('2', '2 - 4 AM'),
+    ('2', '4 - 6 AM'),
+    ]
 
 
 #********************************************************************************************************
@@ -37,36 +34,17 @@ class ScheduleForm(forms.Form):
     '''
     class that generates a new schedule
     '''
-    day = forms.DateField()
-    course = forms.CharField(max_length = 10)
-    year1 = forms.IntegerField()
-    year2 = forms.IntegerField()
-    year3 = forms.IntegerField()
-    year4 = forms.IntegerField()
-    period = forms.CharField(max_length = 10)
-    room = forms.CharField(max_length = 10)
-#
-#
-#
-# class ProductForm(forms.Form):
-#     '''
-#     class that generates the Product creation form
-#     '''
-#     title = forms.CharField(label='Title',max_length = 50)
-#     isbn = forms.CharField(label='ISBN',max_length = 50)
-#     category = forms.CharField(label='Category', widget=forms.Select(choices=CATEGORY_CHOICES))
-#     author = forms.CharField(label='Author',max_length = 50)
-#     publisher = forms.CharField(label='Publisher', widget=forms.Select(choices=PUBLISHER_CHOICES))
-#     price = forms.IntegerField(label='price')
-#     quantity = forms.CharField(label='Quantity',max_length = 50)
-#     image = forms.ImageField(label='Image',max_length = 50)
-#
+    day = forms.ChoiceField(choices=DAY_CHOICES,widget=forms.RadioSelect())
+    course = forms.ChoiceField(choices=COURSE_CHOICES,widget=forms.RadioSelect())
+    period = forms.ChoiceField(choices=PERIOD_CHOICES,widget=forms.RadioSelect())
+#   year1 = forms.IntegerField()
+#     year2 = forms.IntegerField()
+#     year3 = forms.IntegerField()
+#     year4 = forms.IntegerField()
+    room1 = forms.CharField(max_length = 10)
+    room2 = forms.CharField(max_length = 10)
+    room3 = forms.CharField(max_length = 10)
+    room4 = forms.CharField(max_length = 10)
+
 
 #*************************************************************************************************************
-# class ProfileForm(forms.ModelForm):
-#     '''
-#     Class to create a form for an authenticated user to update profile
-#     '''
-#     class Meta:
-#         model = Profile
-#         fields = ['profile_photo','name']

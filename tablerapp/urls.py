@@ -7,6 +7,7 @@ from . import views
 urlpatterns = [
     url(r'^$',views.index,name='home'),
     url(r'^table/record/',views.create_table,name='CreateTable'),
+    url(r'^view/schedules', views.view_schedule, name='ViewSchedules'),
     url(r'^accounts/', include('registration.backends.simple.urls')),
 
 ]

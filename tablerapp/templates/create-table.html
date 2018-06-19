@@ -14,13 +14,17 @@
      {{block.super}}
 
      <div class="container">
-         <div class="col-md-8 col-lg-8">
-             <form action=""  method="post" enctype="multipart/form-data">
+         <div class="col-md-8 col-md-offset-2">
+             <form class="uk-form-horizontal" action=""  method="post" enctype="multipart/form-data">
                  {% csrf_token %}
                  {% bootstrap_form form %}
-                 <input type="submit" class="btn btn-success btn-md" value="Post">
+                 <input type="submit" class="btn uk-button uk-button-primary btn-md" value="Post">
              </form>
-
+             <!-- <form action="/your-name/" method="post">
+                 <label for="your_name">Your name: </label>
+                 <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
+                 <input type="submit" value="OK">
+             </form> -->
          </div>
      </div>
 

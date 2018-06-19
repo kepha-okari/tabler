@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'bootstrap3',
+    'bootstrap_form_horizontal',
     'tablerapp.apps.TablerappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
