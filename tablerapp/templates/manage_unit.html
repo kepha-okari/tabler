@@ -1,0 +1,76 @@
+ {% extends 'base.html' %}
+ {% load staticfiles%}
+ {% load bootstrap3 %}
+ <!-- Styles block -->
+ {% block styles %}
+
+     {{block.super}}
+     <link rel="stylesheet" href="{% static ''%}">
+ {% endblock %}
+
+ <!-- Content block -->
+ {% block content %}
+
+     {{block.super}}
+
+     <div class="container">
+
+        <div class="col-md-6">
+          <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped">
+            {% if units %}
+              <caption><h4 style="color:rgb(22, 113, 0)">UNITS</h4></caption>
+
+
+              <thead>
+                  <tr>
+                    <th style="font-size:15px;color:rgb(212, 3, 66);">NAME</th>
+                    <th style="font-size:15px;color:rgb(212, 3, 66);">CODE</th>
+                    <th style="font-size:15px;color:rgb(212, 3, 66);">ACTION</th>
+                  </tr>
+              </thead>
+
+
+                  <tbody>
+
+
+                    {% for unit in units %}
+                      <tr>
+                        <!-- day of the week section -->
+                            <td>
+                              {{unit.name | upper}}
+                            </td>
+                            <td>
+                              {{unit.code | upper}}
+                            </td>
+                            <td>
+                              <a href="{% url 'DeleteUnit' unit.id %}"><button type="submit" class="uk-button uk-button-danger">Remove</button></a>
+                            </td>
+
+                        <!-- day of the week section -->
+                      </tr>
+                      {% endfor %}
+
+                  </tbody>
+                </table>
+                 {% endif %}
+        </div>
+         <div class="col-md-6" >
+
+             <form action="/manage/unit/" method="post" style="margin-top:20%;">
+                  {% csrf_token %}
+
+                  <div class="uk-margin">
+                      <div uk-form-custom>
+                          <input  name="unit" placeholder="Enter name of unit"type="text">
+                          <input  name="code" placeholder="Enter unit code" type="text">
+
+                          <button type="submit" class="uk-button uk-button-primary"   value="OK">Add</button>
+                      </div>
+                  </div>
+
+             </form>
+
+         </div>
+     </div>
+
+ {% endblock %}

@@ -5,7 +5,7 @@
  {% block styles %}
 
      {{block.super}}
-     <link rel="stylesheet" href="{% static 'css/new-post.css'%}">
+     <link rel="stylesheet" href="{% static ''%}">
  {% endblock %}
 
  <!-- Content block -->
@@ -18,11 +18,103 @@
 
              <form action="/table/record/" method="post">
                   {% csrf_token %}
-                 <label for="variable">Your name: </label>
-                 <input id="variable" type="text" name="variable"  value="{{ current_name }}">
-                 <label for="variable2">Your name: </label>
-                 <input id="variable" type="text" name="variable2"  value="{{ current_name }}">
-                 <input type="submit" value="OK">
+                 <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                     <label><input class="uk-radio" type="radio" name="day" value="mon"checked> Monday</label>
+                     <label><input class="uk-radio" type="radio" name="day" value="tue"> Tuesday</label>
+                     <label><input class="uk-radio" type="radio" name="day" value="wed"> Wednesday</label>
+                     <label><input class="uk-radio" type="radio" name="day" value="thu"> Thursday</label>
+                     <label><input class="uk-radio" type="radio" name="day" value="fri"> Friday</label>
+                 </div>
+                 <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                     <label><input class="uk-radio" type="radio" name="period" value="7AM - 9AM" checked> 7 A.M</label>
+                     <label><input class="uk-radio" type="radio" name="period" value="9AM - 11AM"> 9 A.M</label>
+                     <label><input class="uk-radio" type="radio" name="period" value="11AM -1PM "> 11 A.M</label>
+                     <label><input class="uk-radio" type="radio" name="period" value="2PM - 4PM"> 2 P.M</label>
+                     <label><input class="uk-radio" type="radio" name="period" value="4PM -6PM"> 4 P.M</label>
+                 </div>
+                 <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                     <label><input class="uk-radio" type="radio" name="course" value="cn" checked> Computer Networks</label>
+                     <label><input class="uk-radio" type="radio" name="course" value="ct"> Computer Technology</label>
+                     <label><input class="uk-radio" type="radio" name="course" value="it"> Information Technology</label>
+                 </div>
+                 <table class="uk-table uk-table-divider">
+                   <thead>
+                       <tr>
+                           <th>YEAR OF STUDY</th>
+                           <th>HALL / ROOM</th>
+                           <th>UNIT</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                       <tr>
+                           <td>First Year</td>
+                           <td>
+                             <select name="room-one" class="uk-select" style="text-align:center">
+                                 <option style="text-align:center" placeholder="select room" >--</option>
+                                 <option style="text-align:center" value="D20">DT2</option>
+                                 <option style="text-align:center" value="D12">DT6</option>
+                             </select>
+                           </td>
+                           <td>
+                             <select name="unit-one" class="uk-select" style="text-align:center">
+                                 <option style="text-align:center" value="BIT 8802">BIT 8802</option>
+                                 <option style="text-align:center" value="BIT 8806">BIT 8806</option>
+                             </select>
+                           </td>
+                       </tr>
+
+                       <tr>
+                           <td>Second Year</td>
+                           <td>
+                             <select name="room-two" class="uk-select" style="text-align:center">
+                               <option style="text-align:center" value="D20">DT2</option>
+                               <option style="text-align:center" value="D12">DT6</option>
+                             </select>
+                           </td>
+                           <td>
+                             <select name="unit-two" class="uk-select" style="text-align:center">
+                                 <option style="text-align:center" value="BIT 8802">BIT 8802</option>
+                                 <option style="text-align:center" value="BIT 8806">BIT 8806</option>
+                             </select>
+                           </td>
+                       </tr>
+
+                       <tr>
+                           <td>Third Year</td>
+                           <td>
+                             <select name="room-three" class="uk-select" style="text-align:center">
+                               <option style="text-align:center" value="D20">DT2</option>
+                               <option style="text-align:center" value="D12">DT6</option>
+                             </select>
+                           </td>
+                           <td>
+                             <select name="unit-three" class="uk-select" style="text-align:center">
+                                 <option style="text-align:center" value="BIT 8802">BIT 8802</option>
+                                 <option style="text-align:center" value="BIT 8806">BIT 8806</option>
+                             </select>
+                           </td>
+                       </tr>
+                       <tr>
+                           <td>Fourth Year</td>
+                           <td>
+                             <select name="room-four" class="uk-select" style="text-align:center">
+                               <option style="text-align:center" value="D20">DT2</option>
+                               <option style="text-align:center" value="D12">DT6</option>
+                             </select>
+                           </td>
+                           <td>
+                             <div class="uk-margin">
+                               <select name="unit-four" class="uk-select" style="text-align:center">
+                                   <option style="text-align:center" value="BIT 8802">BIT 8802</option>
+                                   <option style="text-align:center" value="BIT 8806">BIT 8806</option>
+                               </select>
+
+                           </td>
+                       </tr>
+                   </tbody>
+               </table>
+
+                 <input type="submit" class="uk-button uk-button-primary" value="OK">
              </form>
          </div>
      </div>

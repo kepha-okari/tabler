@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load staticfiles%}
+{% load bootstrap3 %}
+<!-- Styles block -->
+{% block styles %}
+
+    {{block.super}}
+    <link rel="stylesheet" href="{% static ''%}">
+{% endblock %}
+
+<!-- Content block -->
+{% block content %}
+
+    {{block.super}}
+
+    <div class="container">
+
+       <div class="col-md-6">
+         <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped" style="position: relative;float: right">
+           {% if lecturers %}
+             <caption><h4 style="color:rgb(22, 113, 0)">LECTURERS</h4></caption>
+
+
+             <thead>
+                 <tr>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">NAME</th>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">ACTION</th>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">MORE</th>
+                 </tr>
+             </thead>
+
+
+                 <tbody>
+
+
+                   {% for lecturer in lecturers %}
+                     <tr>
+                       <!-- day of the week section -->
+                           <td>
+                             {{lecturer.name | upper}}
+                           </td>
+
+                           <td>
+                             <a href="{% url 'DeleteLecturer' lecturer.id %}"><button type="submit" class="uk-button uk-button-danger">Remove</button></a>
+                           </td>
+                           <td>
+                             <a href="{% url 'LecturerDetails' lecturer.id %}"><button type="submit" class="uk-button uk-button-primary">Manage</button></a>
+                           </td>
+
+
+                       <!-- day of the week section -->
+                     </tr>
+                     {% endfor %}
+
+                 </tbody>
+               </table>
+                {% endif %}
+       </div>
+        <div class="col-md-6" >
+
+            <form action="/manage/lecturer/" method="post" style="margin-top:20%;">
+                 {% csrf_token %}
+
+                 <div class="uk-margin">
+                     <div uk-form-custom>
+                         <input  name="lecturer" placeholder="Enter name of lecturer"type="text">
+                         <button type="submit" class="uk-button uk-button-primary"   value="OK">Add</button>
+                     </div>
+                 </div>
+
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}

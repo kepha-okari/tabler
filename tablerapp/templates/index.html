@@ -1,5 +1,5 @@
 
-{% extends 'base.html' %}
+{% extends 'index-base.html' %}
 {% load static %}
 <!-- Styles block -->
 {% block styles %}
@@ -10,6 +10,6 @@
 {% endblock %}
 
  {% block content %}
- <a class="" href="{% url 'CreateTable' %}"><button class="uk-button uk-button-primary uk-button-small">MAKE TIME-TABLE</button></a>
-  <a class="" href="{% url 'ViewSchedules' %}"><button class="uk-button uk-button-primary uk-button-small">VIEW TIME-TABLE</button></a>
+    <a class="" href="{% url 'CreateTable' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(22, 113, 0)">MAKE TIME-TABLE</button></a>
+    <a class="" href="{% url 'ViewSchedulesInfoTech3' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(176, 128, 6)">VIEW TIME-TABLE</button></a>
  {% endblock %}

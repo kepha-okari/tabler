@@ -10,49 +10,251 @@
 {% endblock %}
 
  {% block content %}
+    <div class="col-md-12" style="background-color:rgb(22, 113, 0);border-top-left-radius:30%;border-top-right-radius:30%;position:">
+
+      <section class="col-md-8 col-md-offset-2" style="background-color:white">
+
+        <hr class="uk-divider-icon" style="color:rgb(48, 131, 9)">
 
 
-      <hr style="color:rgb(19, 175, 167);">
-
-
-      <section class="col-md-8 col-md-offset-2">
-
-                <table class="uk-table uk-table-hover uk-table-condensed">
-                    <caption><h4>TIME TABLE</h4></caption>
-                    {% if schedules %}
+        <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped">
+                  {% if mons %}
+                    <caption><h4 style="color:rgb(22, 113, 0)">MONDAY</h4></caption>
 
                     <thead>
                         <tr>
-                          <th style="font-size:15px;color:rgb(212, 3, 66);">COURSE</th>
-                          <th style="font-size:15px;color:rgb(212, 3, 66);">DAY</th>
                           <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
-                          <th style="font-size:15px;color:rgb(212, 3, 66);">ROOM/HALL</th>
+                          <th style="font-size:15px;color:rgb(212, 3, 66);">UNIT</th>
+                          <th style="font-size:15px;color:rgb(212, 3, 66);">LECTURE-ROOM</th>
+
+
                         </tr>
                     </thead>
 
-
                         <tbody>
-                          {% for schedule in schedules %}
-                            <tr>
-                                {% if schedule.course == 'cn' %}
-                                  <td>COMPUTER NETWORKS</td>
-                                {% elif schedule.course == 'ct' %}
-                                  <td>COMPUTER TECHNOLOGY</td>
-                                {% elif schedule.course == 'it' %}
-                                  <td>INFORMATION TECHNOLOGY</td>
-                                {% endif %}
-                                  <td>{{schedule.day | upper }}</td>
-                                  <td>{{schedule.period | upper }} A.M</td>
-                                  <td>{{schedule.room | upper }}</td>
 
+
+                          {% for mon in mons %}
+                            <tr>
+                              <!-- day of the week section -->
+
+                                  <td>
+                                    {{mon.period}}
+                                  </td>
+                                  <td>
+                                    {{mon.unit1}}
+                                  </td>
+                                  <td>
+                                    {{mon.room1}}
+                                  </td>
+
+                              <!-- day of the week section -->
                             </tr>
                             {% endfor %}
+
                         </tbody>
                       </table>
+                      {% else %}
+                      <div class="uk-alert-danger" uk-alert>
+                        <a class="uk-alert-close" uk-close></a>
+                        <p>Opps! A schedule record for Friday is missing or is currently being reviewed.</p>
+                      </div>
+                      {% endif %}
 
-                    {% endif %}
+                      <hr class="uk-divider-icon" style="color:rgb(48, 131, 9)">
+
+                      <!-- monday -->
 
 
-      </section>
+                      <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped">
+                        {% if tues %}
+                          <caption><h4 style="color:rgb(22, 113, 0)">TUESDAY</h4></caption>
 
+                          <thead>
+                              <tr>
+                                <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
+                                <th style="font-size:15px;color:rgb(212, 3, 66);">UNIT</th>
+                                <th style="font-size:15px;color:rgb(212, 3, 66);">LECTURE-ROOM</th>
+
+
+                              </tr>
+                          </thead>
+
+
+                              <tbody>
+
+
+                                {% for tue in tues %}
+                                  <tr>
+                                    <!-- day of the week section -->
+                                        <td>
+                                          {{tue.period}}
+                                        </td>
+                                        <td>
+                                          {{tue.unit1}}
+                                        </td>
+                                        <td>
+                                          {{tue.room1}}
+                                        </td>
+
+                                    <!-- day of the week section -->
+                                  </tr>
+                                  {% endfor %}
+
+                              </tbody>
+                            </table>
+                            {% else %}
+                            <div class="uk-alert-danger" uk-alert>
+                              <a class="uk-alert-close" uk-close></a>
+                              <p>Opps! A schedule record for Friday is missing or is currently being reviewed.</p>
+                            </div>
+                            {% endif %}
+
+                            <!-- tuesday -->
+
+                            <hr class="uk-divider-icon" style="color:rgb(48, 131, 9)">
+
+                            <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped">
+                              {% if weds %}
+                                <caption><h4 style="color:rgb(22, 113, 0)">WEDNESDAY</h4></caption>
+
+
+                                <thead>
+                                    <tr>
+                                      <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
+                                      <th style="font-size:15px;color:rgb(212, 3, 66);">UNIT</th>
+                                      <th style="font-size:15px;color:rgb(212, 3, 66);">LECTURE-ROOM</th>
+
+
+                                    </tr>
+                                </thead>
+
+
+                                    <tbody>
+
+
+                                      {% for wed in weds %}
+                                        <tr>
+                                          <!-- day of the week section -->
+                                              <td>
+                                                {{wed.period}}
+                                              </td>
+                                              <td>
+                                                {{wed.unit1}}
+                                              </td>
+                                              <td>
+                                                {{wed.room1}}
+                                              </td>
+
+                                          <!-- day of the week section -->
+                                        </tr>
+                                        {% endfor %}
+
+                                    </tbody>
+                                  </table>
+                                  {% else %}
+                                  <div class="uk-alert-danger" uk-alert>
+                                    <a class="uk-alert-close" uk-close></a>
+                                    <p>Opps! A schedule record for Wednesday is missing or is currently being reviewed.</p>
+                                  </div>
+                                  {% endif %}
+
+                                   <!-- thursday -->
+
+                                  <hr class="uk-divider-icon" style="color:rgb(48, 131, 9)">
+
+                                  <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped">
+                                    {% if thus %}
+                                      <caption><h4 style="color:rgb(22, 113, 0)">THURSDAY</h4></caption>
+
+
+                                      <thead>
+                                          <tr>
+                                            <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
+                                            <th style="font-size:15px;color:rgb(212, 3, 66);">UNIT</th>
+                                            <th style="font-size:15px;color:rgb(212, 3, 66);">LECTURE-ROOM</th>
+                                          </tr>
+                                      </thead>
+
+
+                                          <tbody>
+
+
+                                            {% for thu in thus %}
+                                              <tr>
+                                                <!-- day of the week section -->
+                                                    <td>
+                                                      {{thu.period}}
+                                                    </td>
+                                                    <td>
+                                                      {{thu.unit1}}
+                                                    </td>
+                                                    <td>
+                                                      {{thu.room1}}
+                                                    </td>
+
+                                                <!-- day of the week section -->
+                                              </tr>
+                                              {% endfor %}
+
+                                          </tbody>
+                                        </table>
+                                        {% else %}
+                                        <div class="uk-alert-danger" uk-alert>
+                                          <a class="uk-alert-close" uk-close></a>
+                                          <p>Opps! A schedule record for Thursday is missing or is currently being reviewed.</p>
+                                        </div>
+                                        {% endif %}
+
+                                        <hr class="uk-divider-icon" style="color:rgb(48, 131, 9)">
+
+                                        <!-- friday -->
+
+                                        <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped">
+                                          {% if fris %}
+                                            <caption><h4 style="color:rgb(22, 113, 0)">FRIDAY</h4></caption>
+
+                                            <thead>
+                                                <tr>
+                                                  <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
+                                                  <th style="font-size:15px;color:rgb(212, 3, 66);">UNIT</th>
+                                                  <th style="font-size:15px;color:rgb(212, 3, 66);">LECTURE-ROOM</th>
+
+                                                </tr>
+                                            </thead>
+
+                                                <tbody>
+
+
+
+                                                  {% for fri in fris %}
+                                                    <tr>
+                                                      <!-- day of the week section -->
+                                                          <td>
+                                                            {{fri.period}}
+                                                          </td>
+                                                          <td>
+                                                            {{fri.unit1}}
+                                                          </td>
+                                                          <td>
+                                                            {{fri.room1}}
+                                                          </td>
+
+                                                      <!-- day of the week section -->
+                                                    </tr>
+                                                    {% endfor %}
+
+                                                </tbody>
+                                              </table>
+                                              {% else %}
+                                              <div class="uk-alert-danger" uk-alert>
+                                                <a class="uk-alert-close" uk-close></a>
+                                                <p>Opps! A schedule record for Friday is missing or is currently being reviewed.</p>
+                                              </div>
+                                              {% endif %}
+                                              <p>
+                                                <a href="" uk-totop>top </a>
+                                              </p>
+                </section>
+            </div>
 {% endblock %}

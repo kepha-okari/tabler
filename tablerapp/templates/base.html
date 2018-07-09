@@ -24,8 +24,54 @@
 
 </head>
 <body class="">
-  <h1 style="text-align:center;color:rgb(33, 167, 0)">Be on the Know</h1>
+  <div class="col-md-12" style="margin-bottom:0px;">
+    <div class="col-md-5">
+      <h2 style="text-align:center;color:rgb(22, 113, 0)">{{course | upper }}</h2>
+    </div>
+    <div class="col-md-2">
+      <h2 style="color:rgb(176, 128, 6)">{{ year | title }}</23>
+    </div>
 
+    <div class=" uk-inline" style="margin-top:20px;">
+        <button class="uk-button uk-button-default" type="button">Computer Technology</button>
+        <div uk-drop>
+          <div class="uk-card uk-card-body uk-card-default">
+            <a href="{% url 'ViewSchedulesTec' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(22, 113, 0);margin-bottom:5px;"> Year 1 </button></a><br>
+            <a href="{% url 'ViewSchedulesTec2' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(22, 113, 0);margin-bottom:5px;"> Year 2 </button></a><br>
+            <a href="{% url 'ViewSchedulesTec3' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(22, 113, 0);margin-bottom:5px;"> Year 3</button></a><br>
+            <a href="{% url 'ViewSchedulesTec4' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(22, 113, 0);margin-bottom:5px;  "> Year 4 </button></a><br>
+
+          </div>
+        </div>
+    </div>
+    <div class=" uk-inline" style="margin-top:20px;">
+        <button class="uk-button uk-button-default" type="button">Computer Networks</button>
+        <div uk-drop>
+            <div class="uk-card uk-card-body uk-card-default">
+
+              <a href="{% url 'ViewSchedulesCnet' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(22, 113, 0);margin-bottom:5px;">Year 1</button></a><br>
+              <a href="{% url 'ViewSchedulesCnet2' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(22, 113, 0);margin-bottom:5px;">Year 2</button></a><br>
+              <a href="{% url 'ViewSchedulesCnet3' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(22, 113, 0);margin-bottom:5px;">Year 3</button></a><br>
+              <a href="{% url 'ViewSchedulesCnet4' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(22, 113, 0);margin-bottom:5px;">Year 4</button></a><br>
+
+            </div>
+        </div>
+    </div>
+    <div class=" uk-inline" style="margin-top:20px;">
+        <button class="uk-button uk-button-default" type="button">Information Technology</button>
+        <div uk-drop>
+            <div class="uk-card uk-card-body uk-card-default" style="border-color:rgb(22, 113, 0)">
+
+                <a href="{% url 'ViewSchedulesInfoTech' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(22, 113, 0);margin-bottom:5px;" >Year 1</button></a><br>
+                <a href="{% url 'ViewSchedulesInfoTech2' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(22, 113, 0);margin-bottom:5px;">Year 2</button></a><br>
+                <a href="{% url 'ViewSchedulesInfoTech4' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(22, 113, 0);margin-bottom:5px;">Year 3</button></a><br>
+                <a href="{% url 'ViewSchedulesInfoTech4' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(22, 113, 0);margin-bottom:5px;">Year 4</button></a><br>
+
+              </div>
+        </div>
+    </div>
+
+  </div>
 
 
   {% block content %} {% endblock %}
