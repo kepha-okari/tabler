@@ -9,11 +9,11 @@ urlpatterns = [
     url(r'^table/record/',views.create_table,name='CreateTable'),
     url(r'^manage/unit/',views.add_unit,name='AddUnit'),
     url(r'^remove/unit/(\d+)',views.delete_unit,name='DeleteUnit'),
-    url(r'^assign/unit/(\d+)/([0-9]+)',views.assign_unit,name='AssignUnit'),
-    url(r'^manage/lecturer/',views.add_lecturer,name='AddUnit'),
+    url(r'^assign/unit/(?P<unit_id>[-_\w.]+)/(?P<lecturer_id>[-_\w.]+)',views.assign_unit,name='AssignUnit'),
+    url(r'^relieve/unit/(?P<unit_id>[-_\w.]+)/(?P<lecturer_id>[-_\w.]+)',views.relieve_unit,name='RelieveUnit'),
+    url(r'^manage/lecturer/',views.add_lecturer,name='AddLecturer'),
     url(r'^remove/lecturer/(\d+)',views.delete_lecturer,name='DeleteLecturer'),
     url(r'^lecturer/details/(\d+)',views.lecturer_details,name='LecturerDetails'),
-
 
     url(r'^view/computer/technology/one', views.view_schedule_ctec, name='ViewSchedulesTec'),
     url(r'^view/computer/technology/two', views.view_schedule_ctec2, name='ViewSchedulesTec2'),

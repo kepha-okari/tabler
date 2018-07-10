@@ -37,12 +37,15 @@ def delete_unit(request,unit_id):
     return redirect(add_unit)
 
 def assign_unit(request,unit_id,lecturer_id):
+    # print('unit id'+lecturer_id)
     title = None
     unit = Unit.objects.get(id=unit_id)
     unit.assigned = True
     unit.save()
-    assign = Assign(lecturer = lecturer_id, unit = unit_id)
-    return redirect(lecturer_details, unit_id)
+    assign = Assign.assign_unit(int(lecturer_id), int(unit_id))
+    # print('assign '+ assign.lecturer)
+    # assign.save()
+    return redirect(lecturer_details, lecturer_id)
 
 def add_lecturer(request):
     title = 'Lecturers'
@@ -58,7 +61,24 @@ def lecturer_details(request,lecturer_id):
     lecturer = Lecturer.get_specific_lecturer(lecturer_id)
     title = None
     units = Unit.get_unassigned_units
-    return render(request, 'lecturer-details.html', {"title":title,"lecturer":lecturer, "units":units,"lecturer_id":lecturer_id})
+    assignments = Assign.objects.filter(lecturer = lecturer_id)
+    # allocations = reversed([Unit.objects.filter(id=i.unit)[0] for i in assignments])
+    allocations = [Unit.objects.filter(id=i.unit)[0] for i in assignments][::-1][:4]
+
+    counter = len(allocations)
+    if counter < 4:
+        count_status = False
+    else:count_status = True
+
+    return render(request, 'lecturer-details.html', {"title":title,"lecturer":lecturer, "count_status":count_status, "units":units,"lecturer_id":lecturer_id,"allocations":allocations})
+
+def relieve_unit(request,unit_id,lecturer_id):
+    title = 'Lecturers'
+    # remove = Assign.objects.get(id = Assign.objects.filter(unit = unit_id).first().id)
+    unassign_unit = Assign.objects.filter(unit = unit_id).first()
+    remove = Assign.objects.get(id = Assign.objects.filter(unit = unit_id).first().id)
+    remove.delete()
+    return redirect(lecturer_details, lecturer_id)
 
 def delete_lecturer(request,lecturer_id):
     title = 'Lecturers'

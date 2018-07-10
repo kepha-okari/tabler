@@ -14,6 +14,22 @@
      {{block.super}}
 
      <div class="container">
+       
+       <div class="col-md-12">
+           <div class="uk-inline" style="margin-bottom:20px;">
+             <a href="{% url 'home' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(22, 113, 0);margin-bottom:5px;"> Home </button></a><br>
+           </div>
+           <div class="uk-inline" style="margin-bottom:20px;">
+             <a href="{% url 'CreateTable' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(22, 113, 0);margin-bottom:5px;"> Create Table </button></a><br>
+           </div>
+           <div class="uk-inline" style="margin-bottom:20px;">
+             <a href="{% url 'AddUnit' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(22, 113, 0);margin-bottom:5px;"> Manage Unit </button></a><br>
+           </div>
+           <div class="uk-inline" style="margin-bottom:20px;">
+             <a href="{% url 'AddLecturer' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(22, 113, 0);margin-bottom:5px;"> Manage Lecturer </button></a><br>
+           </div>
+       </div>
+
 
         <div class="col-md-6">
           <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped">

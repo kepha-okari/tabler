@@ -70,5 +70,5 @@ class Assign(models.Model):
 
     @classmethod
     def assign_unit(cls,lecturer,unit):
-        record = Unit(name = unit, code = code)
+        record = Assign(lecturer = lecturer, unit = unit)
         record.save()
