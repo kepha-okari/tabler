@@ -42,7 +42,7 @@
                                     {{mon.period}}
                                   </td>
                                   <td>
-                                    {{mon.unit1}}
+                                    <a href="{% url 'UnitDetails' mon.unit1 %}">{{mon.unit1}} </a>
                                   </td>
                                   <td>
                                     {{mon.room1}}
@@ -91,7 +91,7 @@
                                           {{tue.period}}
                                         </td>
                                         <td>
-                                          {{tue.unit1}}
+                                          <a href="{% url 'UnitDetails' tue.unit1 %}">{{tue.unit1}} </a>
                                         </td>
                                         <td>
                                           {{tue.room1}}

@@ -4,6 +4,19 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 import datetime as dt
 
+class Profile(models.Model):
+    user_type = models.CharField(max_length=10,default='student')
+    email = models.EmailField(max_length = 60,blank =True)
+    phone_number = models.CharField(max_length = 10,blank =True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.first_name
+
+    @classmethod
+    def get_profile(cls,user_id):
+        profile = cls.objects.get(user=user_id)
+        return profile
 
 class Schedule(models.Model):
     day = models.CharField(max_length = 10,blank = True,null = True)
@@ -44,6 +57,10 @@ class Unit(models.Model):
         units = cls.objects.all()
         return units
 
+    @classmethod
+    def get_specific_unit(cls, unit_code):
+        unit = cls.objects.get(code = unit_code)
+        return unit
     @classmethod
     def get_unassigned_units(cls):
         units = cls.objects.filter(assigned = False)

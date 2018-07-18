@@ -1,0 +1,75 @@
+ {% extends 'base.html' %}
+ {% load staticfiles%}
+ {% load bootstrap3 %}
+ <!-- Styles block -->
+ {% block styles %}
+
+     {{block.super}}
+     <link rel="stylesheet" href="{% static ''%}">
+ {% endblock %}
+
+ <!-- Content block -->
+ {% block content %}
+
+     {{block.super}}
+
+     <div class="container">
+
+       <div class="col-md-12">
+           <div class="uk-inline" style="margin-bottom:20px;">
+             <a href="{% url 'home' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(22, 113, 0);margin-bottom:5px;"> Home </button></a><br>
+           </div>
+
+       </div>
+
+
+
+         <div class="col-md-10 col-md-offset-1" >
+
+             <form action="/update/profile/" method="post" style="margin-top:20%;">
+                  {% csrf_token %}
+
+
+
+                  <table class="uk-table uk-table-divider">
+                    <thead>
+                        <tr>
+                            <th>USER TYPE</th>
+                            <th>EMAIL</th>
+                            <th>UNIT</th>
+                            <th>UPDATE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                  <td>
+                    <select name="level" class="uk-select" style="text-align:center">
+                        <option style="text-align:center" value="student">Student</option>
+                        <option style="text-align:center" value="lecturer">Lecturer</option>
+                    </select>
+                  </td>
+                  <td>
+
+                    <div class="uk-margin">
+                        <div uk-form-custom>
+                            <input  name="mail" placeholder="Enter name of email"type="text">
+                        </div>
+                    </div>
+                  </td>
+                  <td>
+                      <div class="uk-margin">
+                          <div uk-form-custom>
+                              <input  name="phone" placeholder="Enter phone number"type="text">
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                    <button type="submit" class="uk-button uk-button-primary"   value="OK">Update</button>
+                  </td>
+                </tbody>
+                </table>
+             </form>
+
+         </div>
+     </div>
+
+ {% endblock %}

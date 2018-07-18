@@ -19,28 +19,32 @@
 
   {% block styles %}
     {% bootstrap_css %}
-    <!-- <link rel="stylesheet" href="{% static 'css/news.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/land.css' %}">
   {% endblock %}
 
 </head>
 
 
-<body class="uk-height-large uk-background-cover uk-overflow-hidden uk-light uk-flex uk-flex-top" style="background-image: url('http://upload.wikimedia.org/wikipedia/commons/4/46/Jennifer_Lawrence_at_the_83rd_Academy_Awards.jpg');background-size:cover;">
-
-
+<body class="uk-height-large uk-background-cover uk-overflow-hidden uk-light uk-flex uk-flex-bottom" style="background-color:rgb(22, 113, 0);margin:0px;height:100vh">
   <style media="text/css">
-      body {
-         background: url(http://upload.wikimedia.org/wikipedia/commons/4/46/Jennifer_Lawrence_at_the_83rd_Academy_Awards.jpg')
-      }
+        body {
+          background:url({% static "img/students.jpg" %}) no-repeat;
+        }
   </style>
 
-  {% block content %} {% endblock %}
+  {% block content %}
+    <h1 style="color:rgb(9, 248, 255);font-size:70px;" >The Technical University of Kenya</h1>
+  {% endblock %}
 
   {% block scripts %}
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
      {% bootstrap_javascript %}
+
+
   {% endblock %}
+
 </body>
+
 
 
 

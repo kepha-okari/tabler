@@ -15,6 +15,7 @@
 
     <div class="container">
       <div class="col-md-12">
+       {% if profile.user_type == "admin" %}
           <div class="uk-inline" style="margin-bottom:20px;">
             <a href="{% url 'home' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(22, 113, 0);margin-bottom:5px;"> Home </button></a><br>
           </div>
@@ -27,11 +28,17 @@
           <div class="uk-inline" style="margin-bottom:20px;">
             <a href="{% url 'AddLecturer' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(22, 113, 0);margin-bottom:5px;"> Manage Lecturer </button></a><br>
           </div>
+       {% else %}
+       <div class="uk-inline" style="margin-bottom:20px;">
+         <a href="{% url 'home' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(22, 113, 0);margin-bottom:5px;"> Home </button></a><br>
+       </div>
+       {% endif %}
       </div>
 
        <div class="col-md-6">
          <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped" style="position: relative;float: right">
            {% if lecturer %}
+           <caption><h4 style="color:rgb(22, 113, 0)">{{lecturer.name | upper}}</h4></caption><a href="{% url 'LecturerSchedule' lecturer_id %}"><button type="submit" class="uk-button uk-button-danger">Schedule</button></a>
            {% if count_status %}
            <div class="uk-alert-danger" uk-alert>
              <a class="uk-alert-close" uk-close></a>
@@ -41,12 +48,12 @@
            {% else %}
            <div class="uk-alert-success" uk-alert>
              <a class="uk-alert-close" uk-close></a>
-             <p> You can assign {{lecturer.name|title}} upto 4 units.</p>
+             <p>  {{lecturer.name|title}}  can be assigned upto 4 units.</p>
            </div>
            {% endif %}
-             <caption><h4 style="color:rgb(22, 113, 0)">{{lecturer.name | upper}}</h4></caption>
 
           {% endif %}
+          {% if allocations %}
              <thead>
                  <tr>
                    <th style="font-size:15px;color:rgb(212, 3, 66);">NAME</th>
@@ -54,7 +61,6 @@
                    <th style="font-size:15px;color:rgb(212, 3, 66);">ACTION</th>
                  </tr>
              </thead>
-
 
                  <tbody>
 
@@ -70,18 +76,29 @@
                            <td>
                              <a href="{% url 'RelieveUnit' allocation.id lecturer_id %}"><button type="submit" class="uk-button uk-button-danger">Remove</button></a>
                            </td>
+
                      </tr>
                      {% endfor %}
                      </tr>
 
 
                  </tbody>
+              {% else %}
+              <div class="uk-alert-danger" uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <p> {{lecturer.name|title}}  has not been assigned any unit yet</p>
+              </div>
+              {% endif %}
+
                </table>
 
+
        </div>
+      {% if profile.user_type == "admin" %}
+
         <div class="col-md-6" >
           <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped" style="position: relative;float: right">
-            {% if units %}
+
               <caption><h4 style="color:rgb(22, 113, 0)">UNASSIGNED UNITS</h4></caption>
 
 
@@ -97,18 +114,15 @@
                   <tbody>
                     {% for unit in units %}
                       <tr>
-                        <!-- day of the week section -->
-                            <td>
-                              {{unit.name | upper}}
-                            </td>
-                            <td>
-                              {{unit.code | upper}}
-                            </td>
-                            <td>
-                              <a href="{% url 'AssignUnit' unit.id lecturer_id %}"><button type="submit" class="uk-button uk-button-primary">Assign</button></a>
-                            </td>
-
-                        <!-- day of the week section -->
+                        <td>
+                          {{unit.name | upper}}
+                        </td>
+                        <td>
+                          {{unit.code | upper}}
+                        </td>
+                        <td>
+                          <a href="{% url 'AssignUnit' unit.id lecturer_id %}"><button type="submit" class="uk-button uk-button-primary">Assign</button></a>
+                        </td>
                       </tr>
                       {% endfor %}
 
@@ -116,11 +130,8 @@
 
                   </tbody>
                 </table>
-                 {% endif %}
-
-
-
-        </div>
+            </div>
+       {% endif %}
     </div>
 
 {% endblock %}

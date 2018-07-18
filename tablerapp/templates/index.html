@@ -8,7 +8,43 @@
       <link rel="stylesheet" href="{% static 'css/index.css'%}">
 
 {% endblock %}
+  {% block css %}
+  <style type="text/css">
+  body{
+  background: url("{% static 'img/students.jpg' %}")
+  }
+  h1{
+  color:blue;
+  }
+  </style>
+  {% endblock css%}
 
  {% block content %}
-    <a class="" href="{% url 'ViewSchedulesInfoTech3' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(176, 128, 6)">VIEW TIME-TABLE</button></a>
+
+ <div >
+   <h1 style="color:rgb(9, 248, 255);font-size:50px;margin-bottom:500px;margin-left:100px;" >The Technical University of Kenya</h1>
+ </div>
+
+
+ {% if profile.user_type == 'lecturer' %}
+ <div class=" col-md-12" style="margin-left:100%;">
+   <a class="" href="{% url 'ViewSchedulesInfoTech3' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(176, 128, 6)">VIEW TIME-TABLE</button></a>
+   <a class="" href="{% url 'UpdateProfile' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(176, 128, 6)">Update Profile</button></a>
+   <a class="" href="{% url 'AddLecturer' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(176, 128, 6)">View Lecturer Schedules</button></a>
+
+ </div>
+ {% elif  profile.user_type == 'student'  %}
+ <div class="" style="margin:auto;">
+   <a class="" href="{% url 'ViewSchedulesInfoTech3' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(176, 128, 6)">VIEW TIME-TABLE</button></a>
+   <a class="" href="{% url 'UpdateProfile' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(176, 128, 6)">Update Profile</button></a>
+ </div>
+ {% else %}
+ <div class=""style="margin:20% 20% 10% 5%;">
+   <a class="" href="{% url 'ViewSchedulesInfoTech3' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(176, 128, 6)">VIEW TIME-TABLE</button></a>
+   <a class="" href="{% url 'CreateTable' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(176, 128, 6)">Update Table</button></a>
+
+ </div>
+  {% endif %}
+
+
  {% endblock %}

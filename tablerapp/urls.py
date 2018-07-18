@@ -12,8 +12,13 @@ urlpatterns = [
     url(r'^assign/unit/(?P<unit_id>[-_\w.]+)/(?P<lecturer_id>[-_\w.]+)',views.assign_unit,name='AssignUnit'),
     url(r'^relieve/unit/(?P<unit_id>[-_\w.]+)/(?P<lecturer_id>[-_\w.]+)',views.relieve_unit,name='RelieveUnit'),
     url(r'^manage/lecturer/',views.add_lecturer,name='AddLecturer'),
+    url(r'^lecturer/schedule/(\d+)',views.lecturer_schedule,name='LecturerSchedule'),
     url(r'^remove/lecturer/(\d+)',views.delete_lecturer,name='DeleteLecturer'),
     url(r'^lecturer/details/(\d+)',views.lecturer_details,name='LecturerDetails'),
+    url(r'^unit/details/(?P<unit_code>[-_\w.]+)',views.unit_details,name='UnitDetails'),
+    url(r'^update/profile/',views.update_profile,name='UpdateProfile'),
+
+
 
     url(r'^view/computer/technology/one', views.view_schedule_ctec, name='ViewSchedulesTec'),
     url(r'^view/computer/technology/two', views.view_schedule_ctec2, name='ViewSchedulesTec2'),

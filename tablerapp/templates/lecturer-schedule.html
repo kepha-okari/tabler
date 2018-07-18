@@ -1,0 +1,736 @@
+{% extends 'base.html' %}
+{% load staticfiles%}
+{% load bootstrap3 %}
+<!-- Styles block -->
+{% block styles %}
+
+    {{block.super}}
+    <link rel="stylesheet" href="{% static ''%}">
+{% endblock %}
+
+<!-- Content block -->
+{% block content %}
+
+    {{block.super}}
+
+    <div class="container-fluid">
+      <div class="col-md-12">
+          <div class="uk-inline" style="margin-bottom:20px;">
+            <a href="{% url 'home' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(22, 113, 0);margin-bottom:5px;"> Home </button></a><br>
+          </div>
+          <div class="uk-inline" style="margin-bottom:20px;">
+            <a href="{% url 'CreateTable' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(22, 113, 0);margin-bottom:5px;"> Create Table </button></a><br>
+          </div>
+          <div class="uk-inline" style="margin-bottom:20px;">
+            <a href="{% url 'AddUnit' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(22, 113, 0);margin-bottom:5px;"> Manage Unit </button></a><br>
+          </div>
+          <div class="uk-inline" style="margin-bottom:20px;">
+            <a href="{% url 'AddLecturer' %}"><button class="uk-button uk-button-primary uk-button-small" style="background-color:rgb(22, 113, 0);margin-bottom:5px;"> Manage Lecturer </button></a><br>
+          </div>
+      </div>
+
+       <div class="col-md-3">
+         <caption><h2 style="color:rgb(176, 128, 6)">First year</h2></caption>
+
+         <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped" style="position: relative;float: right">
+
+             <caption><h4 style="color:rgb(22, 113, 0)">MONDAY</h4></caption>
+
+           {% for data in first %}
+             <thead>
+                 <tr>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">UNIT</th>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">COURSE</th>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
+                 </tr>
+             </thead>
+
+
+             <tbody>
+                 {% for info in data %}
+                 {% if info.day == 'mon'%}
+                 <tr>
+                       <td style="font-size:12px;">
+                         <a href="{% url 'UnitDetails' info.unit1 %}">{{info.unit1}} </a>
+                       </td style="font-size:12px;">
+                       <td style="font-size:12px;">
+                         {{info.course | upper}}
+                       </td>
+                       <td style="font-size:12px;">
+                         {{info.period | upper}}
+                       </td>
+                 </tr>
+                 {%endif%}
+              {% endfor %}
+             </tbody>
+
+         {% endfor %}
+         </table>
+
+         <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped" style="position: relative;float: right">
+
+             <caption><h4 style="color:rgb(22, 113, 0)">TUESDAY</h4></caption>
+
+           {% for data in first %}
+             <thead>
+                 <tr>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">UNIT</th>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">COURSE</th>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
+                 </tr>
+             </thead>
+
+
+             <tbody>
+                 {% for info in data %}
+                 {% if info.day == 'tue'%}
+                 <tr>
+                       <td style="font-size:12px;">
+                         <a href="{% url 'UnitDetails' info.unit1 %}">{{info.unit1}} </a>
+                       </td style="font-size:12px;">
+                       <td style="font-size:12px;">
+                         {{info.course | upper}}
+                       </td>
+                       <td style="font-size:12px;">
+                         {{info.period | upper}}
+                       </td>
+                 </tr>
+                 {%endif%}
+              {% endfor %}
+             </tbody>
+
+         {% endfor %}
+         </table>
+
+         <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped" style="position: relative;float: right">
+
+             <caption><h4 style="color:rgb(22, 113, 0)">WEDNESDAY</h4></caption>
+
+           {% for data in first %}
+             <thead>
+                 <tr>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">UNIT</th>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">COURSE</th>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
+                 </tr>
+             </thead>
+
+             <tbody>
+                 {% for info in data %}
+                 {% if info.day == 'wed'%}
+                 <tr>
+                       <td style="font-size:12px;">
+                         <a href="{% url 'UnitDetails' info.unit1 %}">{{info.unit1}} </a>
+                       </td style="font-size:12px;">
+                       <td style="font-size:12px;">
+                         {{info.course | upper}}
+                       </td>
+                       <td style="font-size:12px;">
+                         {{info.period | upper}}
+                       </td>
+                 </tr>
+                 {%endif%}
+              {% endfor %}
+             </tbody>
+
+         {% endfor %}
+         </table>
+         <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped" style="position: relative;float: right">
+
+             <caption><h4 style="color:rgb(22, 113, 0)">THURSDAY</h4></caption>
+
+           {% for data in first %}
+             <thead>
+                 <tr>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">UNIT</th>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">COURSE</th>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
+                 </tr>
+             </thead>
+
+             <tbody>
+                 {% for info in data %}
+                 {% if info.day == 'thu'%}
+                 <tr>
+                       <td style="font-size:12px;">
+                         <a href="{% url 'UnitDetails' info.unit1 %}">{{info.unit1}} </a>
+                       </td style="font-size:12px;">
+                       <td style="font-size:12px;">
+                         {{info.course | upper}}
+                       </td>
+                       <td style="font-size:12px;">
+                         {{info.period | upper}}
+                       </td>
+                 </tr>
+                 {%endif%}
+              {% endfor %}
+             </tbody>
+
+         {% endfor %}
+         </table>
+         <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped" style="position: relative;float: right">
+
+             <caption><h4 style="color:rgb(22, 113, 0)">FRIDAY</h4></caption>
+
+           {% for data in first %}
+             <thead>
+                 <tr>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">UNIT</th>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">COURSE</th>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
+                 </tr>
+             </thead>
+
+             <tbody>
+                 {% for info in data %}
+                 {% if info.day == 'fri'%}
+                 <tr>
+                       <td style="font-size:12px;">
+                         <a href="{% url 'UnitDetails' info.unit1 %}">{{info.unit1}} </a>
+                       </td style="font-size:12px;">
+                       <td style="font-size:12px;">
+                         {{info.course | upper}}
+                       </td>
+                       <td style="font-size:12px;">
+                         {{info.period | upper}}
+                       </td>
+                 </tr>
+                 {%endif%}
+              {% endfor %}
+             </tbody>
+
+         {% endfor %}
+         </table>
+
+       </div>
+                       <!-- SECOND YEAR -->
+
+       <div class="col-md-3" style="lborder: solid black 2px;">
+         <caption><h2 style="color:rgb(176, 128, 6)">Second Year</h2></caption>
+
+         <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped" style="position: relative;float: right">
+
+             <caption><h4 style="color:rgb(22, 113, 0)">MONDAY</h4></caption>
+
+           {% for data in second %}
+             <thead>
+                 <tr>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">UNIT</th>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">COURSE</th>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
+                 </tr>
+             </thead>
+
+
+             <tbody>
+                 {% for info in data %}
+                 {% if info.day == 'mon'%}
+                 <tr>
+                       <td style="font-size:12px;">
+                         <a href="{% url 'UnitDetails' info.unit2 %}">{{info.unit2}} </a>
+                       </td style="font-size:12px;">
+                       <td style="font-size:12px;">
+                         {{info.course | upper}}
+                       </td>
+                       <td style="font-size:12px;">
+                         {{info.period | upper}}
+                       </td>
+                 </tr>
+                 {%endif%}
+              {% endfor %}
+             </tbody>
+
+         {% endfor %}
+         </table>
+
+         <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped" style="position: relative;float: right">
+
+             <caption><h4 style="color:rgb(22, 113, 0)">TUESDAY</h4></caption>
+
+           {% for data in second %}
+             <thead>
+                 <tr>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">UNIT</th>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">COURSE</th>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
+                 </tr>
+             </thead>
+
+
+             <tbody>
+                 {% for info in data %}
+                 {% if info.day == 'tue'%}
+                 <tr>
+                       <td style="font-size:12px;">
+                         <a href="{% url 'UnitDetails' info.unit2 %}">{{info.unit2}} </a>
+                       </td style="font-size:12px">
+                       <td style="font-size:12px;">
+                         {{info.course | upper}}
+                       </td>
+                       <td style="font-size:12px;">
+                         {{info.period | upper}}
+                       </td>
+                 </tr>
+                 {%endif%}
+              {% endfor %}
+             </tbody>
+
+         {% endfor %}
+         </table>
+
+         <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped" style="position: relative;float: right">
+
+             <caption><h4 style="color:rgb(22, 113, 0)">WEDNESDAY</h4></caption>
+
+           {% for data in second %}
+             <thead>
+                 <tr>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">UNIT</th>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">COURSE</th>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
+                 </tr>
+             </thead>
+
+             <tbody>
+                 {% for info in data %}
+                 {% if info.day == 'wed'%}
+                 <tr>
+                       <td style="font-size:12px;">
+                         <a href="{% url 'UnitDetails' info.unit2 %}">{{info.unit2}} </a>
+                       </td style="font-size:12px;">
+                       <td style="font-size:12px;">
+                         {{info.course | upper}}
+                       </td>
+                       <td style="font-size:12px;">
+                         {{info.period | upper}}
+                       </td>
+                 </tr>
+                 {%endif%}
+              {% endfor %}
+             </tbody>
+
+         {% endfor %}
+         </table>
+         <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped" style="position: relative;float: right">
+
+             <caption><h4 style="color:rgb(22, 113, 0)">THURSDAY</h4></caption>
+
+           {% for data in second %}
+             <thead>
+                 <tr>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">UNIT</th>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">COURSE</th>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
+                 </tr>
+             </thead>
+
+             <tbody>
+                 {% for info in data %}
+                 {% if info.day == 'thu'%}
+                 <tr>
+                       <td style="font-size:12px;">
+                         <a href="{% url 'UnitDetails' info.unit2 %}">{{info.unit2}} </a>
+                       </td style="font-size:12px;">
+                       <td style="font-size:12px;">
+                         {{info.course | upper}}
+                       </td>
+                       <td style="font-size:12px;">
+                         {{info.period | upper}}
+                       </td>
+                 </tr>
+                 {%endif%}
+              {% endfor %}
+             </tbody>
+
+         {% endfor %}
+         </table>
+         <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped" style="position: relative;float: right">
+
+             <caption><h4 style="color:rgb(22, 113, 0)">FRIDAY</h4></caption>
+
+           {% for data in second %}
+             <thead>
+                 <tr>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">UNIT</th>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">COURSE</th>
+                   <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
+                 </tr>
+             </thead>
+
+             <tbody>
+                 {% for info in data %}
+                 {% if info.day == 'fri'%}
+                 <tr>
+                       <td style="font-size:12px;">
+                         <a href="{% url 'UnitDetails' info.unit2 %}">{{info.unit2}} </a>
+                       </td style="font-size:12px;">
+                       <td style="font-size:12px;">
+                         {{info.course | upper}}
+                       </td>
+                       <td style="font-size:12px;">
+                         {{info.period | upper}}
+                       </td>
+                 </tr>
+                 {%endif%}
+              {% endfor %}
+             </tbody>
+
+         {% endfor %}
+         </table>
+
+       </div>
+       <!-- THIRD YEAR -->
+
+<div class="col-md-3" style="lborder: solid black 2px;">
+<caption><h2 style="color:rgb(176, 128, 6)">Third year</h2></caption>
+
+<table class="uk-table uk-table-hover uk-table-condensed uk-table-striped" style="position: relative;float: right">
+
+<caption><h4 style="color:rgb(22, 113, 0)">MONDAY</h4></caption>
+
+      {% for data in third %}
+      <thead>
+       <tr>
+         <th style="font-size:15px;color:rgb(212, 3, 66);">UNIT</th>
+         <th style="font-size:15px;color:rgb(212, 3, 66);">COURSE</th>
+         <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
+       </tr>
+      </thead>
+
+
+      <tbody>
+           {% for info in data %}
+           {% if info.day == 'mon'%}
+           <tr>
+                 <td style="font-size:12px;">
+                   <a href="{% url 'UnitDetails' info.unit3 %}">{{info.unit3}} </a>
+                 </td style="font-size:12px;">
+                 <td style="font-size:12px;">
+                   {{info.course | upper}}
+                 </td>
+                 <td style="font-size:12px;">
+                   {{info.period | upper}}
+                 </td>
+           </tr>
+           {%endif%}
+          {% endfor %}
+      </tbody>
+
+    {% endfor %}
+    </table>
+
+      <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped" style="position: relative;float: right">
+
+      <caption><h4 style="color:rgb(22, 113, 0)">TUESDAY</h4></caption>
+
+      {% for data in third %}
+      <thead>
+       <tr>
+         <th style="font-size:15px;color:rgb(212, 3, 66);">UNIT</th>
+         <th style="font-size:15px;color:rgb(212, 3, 66);">COURSE</th>
+         <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
+       </tr>
+      </thead>
+
+
+      <tbody>
+       {% for info in data %}
+       {% if info.day == 'tue'%}
+       <tr>
+             <td style="font-size:12px;">
+               <a href="{% url 'UnitDetails' info.unit3 %}">{{info.unit3}} </a>
+             </td style="font-size:12px;">
+             <td style="font-size:12px;">
+               {{info.course | upper}}
+             </td>
+             <td style="font-size:12px;">
+               {{info.period | upper}}
+             </td>
+       </tr>
+       {%endif%}
+      {% endfor %}
+      </tbody>
+
+      {% endfor %}
+      </table>
+
+      <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped" style="position: relative;float: right">
+
+      <caption><h4 style="color:rgb(22, 113, 0)">WEDNESDAY</h4></caption>
+
+      {% for data in third %}
+      <thead>
+       <tr>
+         <th style="font-size:15px;color:rgb(212, 3, 66);">UNIT</th>
+         <th style="font-size:15px;color:rgb(212, 3, 66);">COURSE</th>
+         <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
+       </tr>
+      </thead>
+
+      <tbody>
+       {% for info in data %}
+       {% if info.day == 'wed'%}
+       <tr>
+             <td style="font-size:12px;">
+               <a href="{% url 'UnitDetails' info.unit3 %}">{{info.unit3}} </a>
+             </td style="font-size:12px;">
+             <td style="font-size:12px;">
+               {{info.course | upper}}
+             </td>
+             <td style="font-size:12px;">
+               {{info.period | upper}}
+             </td>
+       </tr>
+       {%endif%}
+      {% endfor %}
+      </tbody>
+
+      {% endfor %}
+      </table>
+      <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped" style="position: relative;float: right">
+
+      <caption><h4 style="color:rgb(22, 113, 0)">THURSDAY</h4></caption>
+
+      {% for data in third %}
+      <thead>
+       <tr>
+         <th style="font-size:15px;color:rgb(212, 3, 66);">UNIT</th>
+         <th style="font-size:15px;color:rgb(212, 3, 66);">COURSE</th>
+         <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
+       </tr>
+      </thead>
+
+      <tbody>
+       {% for info in data %}
+       {% if info.day == 'thu'%}
+       <tr>
+             <td style="font-size:12px;">
+               <a href="{% url 'UnitDetails' info.unit3 %}">{{info.unit3}} </a>
+             </td style="font-size:12px;">
+             <td style="font-size:12px;">
+               {{info.course | upper}}
+             </td>
+             <td style="font-size:12px;">
+               {{info.period | upper}}
+             </td>
+       </tr>
+       {%endif%}
+      {% endfor %}
+      </tbody>
+
+      {% endfor %}
+      </table>
+      <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped" style="position: relative;float: right">
+
+      <caption><h4 style="color:rgb(22, 113, 0)">FRIDAY</h4></caption>
+
+      {% for data in third %}
+      <thead>
+       <tr>
+         <th style="font-size:15px;color:rgb(212, 3, 66);">UNIT</th>
+         <th style="font-size:15px;color:rgb(212, 3, 66);">COURSE</th>
+         <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
+       </tr>
+      </thead>
+
+      <tbody>
+       {% for info in data %}
+       {% if info.day == 'fri'%}
+       <tr>
+             <td style="font-size:12px;">
+               <a href="{% url 'UnitDetails' info.unit3 %}">{{info.unit3}} </a>
+             </td style="font-size:12px;">
+             <td style="font-size:12px;">
+               {{info.course | upper}}
+             </td>
+             <td style="font-size:12px;">
+               {{info.period | upper}}
+             </td>
+       </tr>
+       {%endif%}
+      {% endfor %}
+      </tbody>
+
+      {% endfor %}
+      </table>
+      </div>
+
+      <div class="col-md-3">
+        <caption><h2 style="color:rgb(176, 128, 6)">Fourth year</h2></caption>
+
+        <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped" style="position: relative;float: right">
+
+            <caption><h4 style="color:rgb(22, 113, 0)">MONDAY</h4></caption>
+
+          {% for data in fourth %}
+            <thead>
+                <tr>
+                  <th style="font-size:15px;color:rgb(212, 3, 66);">UNIT</th>
+                  <th style="font-size:15px;color:rgb(212, 3, 66);">COURSE</th>
+                  <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                {% for info in data %}
+                {% if info.day == 'mon'%}
+                <tr>
+                      <td style="font-size:12px;">
+                        <a href="{% url 'UnitDetails' info.unit4 %}">{{info.unit4}} </a>
+                      </td style="font-size:12px;">
+                      <td style="font-size:12px;">
+                        {{info.course | upper}}
+                      </td>
+                      <td style="font-size:12px;">
+                        {{info.period | upper}}
+                      </td>
+                </tr>
+                {%endif%}
+             {% endfor %}
+            </tbody>
+
+        {% endfor %}
+        </table>
+
+        <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped" style="position: relative;float: right">
+
+            <caption><h4 style="color:rgb(22, 113, 0)">TUESDAY</h4></caption>
+
+          {% for data in fourth %}
+            <thead>
+                <tr>
+                  <th style="font-size:15px;color:rgb(212, 3, 66);">UNIT</th>
+                  <th style="font-size:15px;color:rgb(212, 3, 66);">COURSE</th>
+                  <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                {% for info in data %}
+                {% if info.day == 'tue'%}
+                <tr>
+                      <td style="font-size:12px;">
+                        <a href="{% url 'UnitDetails' info.unit4 %}">{{info.unit4}} </a>
+                      </td style="font-size:12px;">
+                      <td style="font-size:12px;">
+                        {{info.course | upper}}
+                      </td>
+                      <td style="font-size:12px;">
+                        {{info.period | upper}}
+                      </td>
+                </tr>
+                {%endif%}
+             {% endfor %}
+            </tbody>
+
+        {% endfor %}
+        </table>
+
+        <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped" style="position: relative;float: right">
+
+            <caption><h4 style="color:rgb(22, 113, 0)">WEDNESDAY</h4></caption>
+
+          {% for data in fourth %}
+            <thead>
+                <tr>
+                  <th style="font-size:15px;color:rgb(212, 3, 66);">UNIT</th>
+                  <th style="font-size:15px;color:rgb(212, 3, 66);">COURSE</th>
+                  <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for info in data %}
+                {% if info.day == 'wed'%}
+                <tr>
+                      <td style="font-size:12px;">
+                        <a href="{% url 'UnitDetails' info.unit4 %}">{{info.unit4}} </a>
+                      </td style="font-size:12px;">
+                      <td style="font-size:12px;">
+                        {{info.course | upper}}
+                      </td>
+                      <td style="font-size:12px;">
+                        {{info.period | upper}}
+                      </td>
+                </tr>
+                {%endif%}
+             {% endfor %}
+            </tbody>
+
+        {% endfor %}
+        </table>
+        <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped" style="position: relative;float: right">
+
+            <caption><h4 style="color:rgb(22, 113, 0)">THURSDAY</h4></caption>
+
+          {% for data in fourth %}
+            <thead>
+                <tr>
+                  <th style="font-size:15px;color:rgb(212, 3, 66);">UNIT</th>
+                  <th style="font-size:15px;color:rgb(212, 3, 66);">COURSE</th>
+                  <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for info in data %}
+                {% if info.day == 'thu'%}
+                <tr>
+                      <td style="font-size:12px;">
+                        <a href="{% url 'UnitDetails' info.unit4 %}">{{info.unit4}} </a>
+                      </td style="font-size:12px;">
+                      <td style="font-size:12px;">
+                        {{info.course | upper}}
+                      </td>
+                      <td style="font-size:12px;">
+                        {{info.period | upper}}
+                      </td>
+                </tr>
+                {%endif%}
+             {% endfor %}
+            </tbody>
+
+        {% endfor %}
+        </table>
+        <table class="uk-table uk-table-hover uk-table-condensed uk-table-striped" style="position: relative;float: right">
+
+            <caption><h4 style="color:rgb(22, 113, 0)">FRIDAY</h4></caption>
+
+          {% for data in fourth %}
+            <thead>
+                <tr>
+                  <th style="font-size:15px;color:rgb(212, 3, 66);">UNIT</th>
+                  <th style="font-size:15px;color:rgb(212, 3, 66);">COURSE</th>
+                  <th style="font-size:15px;color:rgb(212, 3, 66);">PERIOD</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for info in data %}
+                {% if info.day == 'fri'%}
+                <tr>
+                      <td style="font-size:12px;">
+                        <a href="{% url 'UnitDetails' info.unit4 %}">{{info.unit4}} </a>
+                      </td style="font-size:12px;">
+                      <td style="font-size:12px;">
+                        {{info.course | upper}}
+                      </td>
+                      <td style="font-size:12px;">
+                        {{info.period | upper}}
+                      </td>
+                </tr>
+                {%endif%}
+             {% endfor %}
+            </tbody>
+
+        {% endfor %}
+        </table>
+
+      </div>
+
+</div>
+
+
+{% endblock %}
